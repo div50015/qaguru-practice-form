@@ -22,8 +22,8 @@ def test_registration_form():
     browser.element('#userNumber').type('9185024041')
     browser.element('#dateOfBirthInput').send_keys(Keys.CONTROL,'a').type('04 august 1967').press_enter()
     browser.element('#subjectsInput').type('History').press_enter()
-    browser.element('[for=hobbies-checkbox-1]').perform(command.js.scroll_into_view) # прокрутка скрола до элемента
-    browser.element('[for=hobbies-checkbox-1]').click()
+    # browser.element('[for=hobbies-checkbox-1]').click() # клик на элементе без прокрутви
+    browser.element('[for=hobbies-checkbox-1]').perform(command.js.scroll_into_view).click() # прокрутка скрола до элемента и клик
     import tests
     browser.element('#uploadPicture').send_keys(os.path.dirname(tests.__file__),'/files/ball.jpg')
     browser.element('#currentAddress').type('Russian Novocherkassk')
