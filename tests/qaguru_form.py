@@ -18,12 +18,14 @@ def test_registration_form():
     browser.element('#firstName').type('Igor')
     browser.element('#lastName').type('Degt')
     browser.element('#userEmail').type('div@novoch.ru')
-    browser.all('[for^=gender-radio]').element_by(have.text('Male')).click()
+    # browser.all('[for^=gender-radio]').element_by(have.text('Male')).click() # bad selector (find for text)
+    browser.all('[name=gender]').element_by(have.value('Male')).element('..').click() # good selector (find for value)
     browser.element('#userNumber').type('9185024041')
     browser.element('#dateOfBirthInput').send_keys(Keys.CONTROL,'a').type('04 august 1967').press_enter()
     browser.element('#subjectsInput').type('History').press_enter()
-    # browser.element('[for=hobbies-checkbox-1]').click() # клик на элементе без прокрутви
-    browser.element('[for=hobbies-checkbox-1]').perform(command.js.scroll_into_view).click() # прокрутка скрола до элемента и клик
+    # browser.all('[for^=hobbies-checkbox]').element_by(have.text('Sports')).click() # клик на элементе без прокрутви
+    # поиск элемента, прокрутка скрола и клик
+    browser.all('[for^=hobbies-checkbox]').element_by(have.text('Sports')).perform(command.js.scroll_into_view).click()
     import tests
     browser.element('#uploadPicture').send_keys(os.path.dirname(tests.__file__),'/files/ball.jpg')
     browser.element('#currentAddress').type('Russian Novocherkassk')
@@ -48,3 +50,4 @@ def test_registration_form():
         'State and City', 'Rajasthan Jaipur',
         )
     )
+
