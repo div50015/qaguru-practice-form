@@ -69,17 +69,30 @@ def test_registration_form():
     # time.sleep(3)
 
     # Then
-    browser.element(".table").all("td").should(
-        have.texts(
-            ('Student Name', 'Igor Degt'),
-            ('Student Email', 'div@novoch.ru'),
-            ('Gender', 'Male'),
-            ('Mobile', '9185024041'),
-            ('Date of Birth', '04 August,1967'),
-            ('Subjects', 'History'),
-            ('Hobbies', 'Sports'),
-            ('Picture', 'ball.jpg'),
-            ('Address', 'Russian Novocherkassk'),
-            ('State and City', 'Rajasthan Jaipur'),
-        )
+    # browser.element(".table").all("td").should(
+    #     have.texts(
+    #         ('Student Name', 'Igor Degt'),
+    #         ('Student Email', 'div@novoch.ru'),
+    #         ('Gender', 'Male'),
+    #         ('Mobile', '9185024041'),
+    #         ('Date of Birth', '04 August,1967'),
+    #         ('Subjects', 'History'),
+    #         ('Hobbies', 'Sports'),
+    #         ('Picture', 'ball.jpg'),
+    #         ('Address', 'Russian Novocherkassk'),
+    #         ('State and City', 'Rajasthan Jaipur'),
+    #     )
+    # )
+
+    registration_page.should_registration(
+        'Igor Degt',
+        'div@novoch.ru',
+        'Male',
+        '9185024041',
+        '04 August,1967',
+        'History',
+        'Sports',
+        'ball.jpg',
+        'Russian Novocherkassk',
+        'Rajasthan Jaipur',
     )

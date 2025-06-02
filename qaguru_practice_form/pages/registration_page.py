@@ -76,18 +76,45 @@ class RegistrationPanel:
     def click_buttom(self):
         self.user_submit.click()
 
-    def should_registration(self):
-        browser.element(".table").all("td").should(
-        have.texts(
-            ('Student Name', 'Igor Degt'),
-            ('Student Email', 'div@novoch.ru'),
-            ('Gender', 'Male'),
-            ('Mobile', '9185024041'),
-            ('Date of Birth', '04 August,1967'),
-            ('Subjects', 'History'),
-            ('Hobbies', 'Sports'),
-            ('Picture', 'ball.jpg'),
-            ('Address', 'Russian Novocherkassk'),
-            ('State and City', 'Rajasthan Jaipur'),
+    # def should_registration(self):
+    #     browser.element(".table").all("td").should(
+    #         have.texts(
+    #             ('Student Name', 'Igor Degt'),
+    #             ('Student Email', 'div@novoch.ru'),
+    #             ('Gender', 'Male'),
+    #             ('Mobile', '9185024041'),
+    #             ('Date of Birth', '04 August,1967'),
+    #             ('Subjects', 'History'),
+    #             ('Hobbies', 'Sports'),
+    #             ('Picture', 'ball.jpg'),
+    #             ('Address', 'Russian Novocherkassk'),
+    #             ('State and City', 'Rajasthan Jaipur'),
+    #         )
+    #     )
+    def should_registration(
+        self,
+        name,
+        email,
+        gender,
+        number,
+        birth,
+        subjects,
+        hobbies,
+        pictuse,
+        address,
+        stat_city,
+    ):
+        browser.element(".table").all("td").even.should(
+            have.texts(
+                name,
+                email,
+                gender,
+                number,
+                birth,
+                subjects,
+                hobbies,
+                pictuse,
+                address,
+                stat_city,
+            )
         )
-    )
